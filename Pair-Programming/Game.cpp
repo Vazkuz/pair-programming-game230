@@ -1,3 +1,4 @@
+//TEAM: Daniel M., Rohit P., Gabriel O.
 #include "Game.h"
 #include "Particle.h"
 #include "ParticleEffect.h"

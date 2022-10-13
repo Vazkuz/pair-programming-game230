@@ -1,4 +1,4 @@
-
+//TEAM: Daniel M., Rohit P., Gabriel O.
 #include "Particle.h"
 
 using namespace std;

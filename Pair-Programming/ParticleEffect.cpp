@@ -1,3 +1,4 @@
+//TEAM: Daniel M., Rohit P., Gabriel O.
 #include "ParticleEffect.h"
 #include "Particle.h"
 using namespace sf;
