@@ -1,37 +1,39 @@
 #include "Game.h"
+#include "Particle.h"
+#include "ParticleEffect.h"
+
 using namespace std;
 using namespace gm;
 using namespace sf;
 
-class GameObject {
-private:
-	Shape* shape;
-	ParticleEffect* pEffect;
+ParticleEffect* pEffect = nullptr;
 
-public:
-	GameObject(const Vector2f& position, float size) {
-		shape = new CircleShape(size);
-		shape->setPosition(position);
-	}
-	~GameObject() {
-		delete shape;
-		shape = nullptr;
-	}
-
-	void update(RenderWindow& window) {
-		window.draw(*shape);
-	}
-
-	void render(RenderWindow& window) {
-		window.clear();
-		window.display();
-	}
-
-	ParticleEffect(const Vector2f& position) {
-		pEffect = new ParticleEffect;
-		pEffect->setPosition(position)
-	}
-};
+//class GameObject {
+//private:
+//	Shape* shape;
+//
+//public:
+//	
+//
+//	GameObject(const Vector2f& position, float size) {
+//		shape = new CircleShape(size);
+//		shape->setPosition(position);
+//	}
+//	~GameObject() {
+//		delete shape;
+//		shape = nullptr;
+//	}
+//
+//	void update(RenderWindow& window) {
+//		window.draw(*shape);
+//	}
+//
+//	void render(RenderWindow& window) {
+//		window.clear();
+//		window.display();
+//	}
+//	
+//};
 
 Game::Game() {
 
@@ -50,15 +52,26 @@ void Game::handleInput(sf::RenderWindow& window) {
 		}
 
 		if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
-			cout << "Here goes the particle effect" << endl;
+			pEffect = new ParticleEffect(Vector2f(Mouse::getPosition(window).x, Mouse::getPosition(window).y));
+			pEffect->Emit();
 		}
 	}
 }
 
 void Game::update(sf::RenderWindow& window) {
+	if (pEffect) {
+		pEffect->Update();
+		if (pEffect->particlesAlive <= 0) {
+			pEffect = nullptr;
+		}
+	}
 }
 
 void Game::render(sf::RenderWindow& window) {
 	window.clear();
+	if (pEffect) {
+		pEffect->Render(window);
+		cout << "Here goes the particle effect" << endl;
+	}
 	window.display();
 }
