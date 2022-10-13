@@ -52,6 +52,10 @@ void Game::handleInput(sf::RenderWindow& window) {
 		}
 
 		if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
+			if (pEffect != nullptr) {
+				delete pEffect;
+				pEffect = nullptr;
+			}
 			pEffect = new ParticleEffect(Vector2f(Mouse::getPosition(window).x, Mouse::getPosition(window).y));
 			pEffect->Emit();
 		}
@@ -71,7 +75,6 @@ void Game::render(sf::RenderWindow& window) {
 	window.clear();
 	if (pEffect) {
 		pEffect->Render(window);
-		cout << "Here goes the particle effect" << endl;
 	}
 	window.display();
 }

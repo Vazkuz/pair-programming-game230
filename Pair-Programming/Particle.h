@@ -33,7 +33,7 @@ public:
     int ageOfParticle = 0;
     float lifespan;
 
-    Particle(Vector2f position, float lifespan = 200.f);
+    Particle(Vector2f position, float size, float lifespan = 60.f);
     ~Particle();
 
     void Update();
