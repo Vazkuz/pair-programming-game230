@@ -10,13 +10,14 @@
 using namespace gm;
 
 /*
-Created by Daniel Madalengoitia, Rohit Pathak, Gabriel Oliver for GAME230
+Created by Daniel Madalengoitia, Rohit Pathak and Gabriel Oliver for GAME230
 
 */
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(1200, 900), "SFML works!");
+    window.setFramerateLimit(60);
     Game g;
 
     while (window.isOpen())

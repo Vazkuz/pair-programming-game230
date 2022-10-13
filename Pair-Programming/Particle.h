@@ -14,7 +14,9 @@ enum ParticleShape
 {
     Circle,
     Triangle,
-    Squar
+
+    Square
+
 
 };
 
@@ -24,18 +26,26 @@ class Particle
 private:
     ParticleShape shape;
     CircleShape body;
-    int size;
+
+    float size;
     Vector2f position;
     Vector2f velocity;
-    short lifespan;
     bool alive = false;
 
-    Particle();
+public:
+    int ageOfParticle = 0;
+    float lifespan;
+
+    Particle(Vector2f position, float size, float lifespan = 60.f);
     ~Particle();
 
     void Update();
 
-    void render(RenderWindow& window);
+
+    void Render(RenderWindow& window);
+
+    void SetVelocity(Vector2f velocity);
+
     
 };
 
