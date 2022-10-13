@@ -10,7 +10,7 @@
 using namespace gm;
 
 /*
-Created by Daniel Madalengoitia, Rohit Pathak, Gabriel Oliver for GAME230
+Created by Daniel Madalengoitia, Rohit Pathak and Gabriel Oliver for GAME230
 
 */
 
