@@ -1,5 +1,6 @@
 
 #include "Particle.h"
+
 using namespace std;
 
 
@@ -22,6 +23,7 @@ Particle::~Particle()
 
 void Particle::Update()
 {
+
     ageOfParticle++;
     position += velocity;
     body.setPosition(position);

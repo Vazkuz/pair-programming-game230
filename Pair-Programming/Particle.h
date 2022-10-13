@@ -14,7 +14,9 @@ enum ParticleShape
 {
     Circle,
     Triangle,
+
     Square
+
 
 };
 
@@ -24,6 +26,7 @@ class Particle
 private:
     ParticleShape shape;
     CircleShape body;
+
     float size;
     Vector2f position;
     Vector2f velocity;
@@ -38,11 +41,11 @@ public:
 
     void Update();
 
+
     void Render(RenderWindow& window);
 
     void SetVelocity(Vector2f velocity);
 
-    
     
 };
 
