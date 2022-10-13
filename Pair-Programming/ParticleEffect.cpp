@@ -37,6 +37,9 @@ public:
     {
         //body.
     }
+    void SetVelocity(sf::Vector2f newVelocity) {
+        velocity = newVelocity;
+    }
 };
 
 // Global Variables
@@ -45,7 +48,7 @@ Particle* particleArray[ARRAY_LENGTH];
 
 ParticleEffect::ParticleEffect() {
     for (int i = 0; i < ARRAY_LENGTH; i++) {
-        *(particleArray + i) = new Particle();
+        *(particleArray + i) = nullptr;
     }
 }
 
@@ -58,20 +61,33 @@ ParticleEffect::~ParticleEffect() {
 }
 
 void ParticleEffect::Update() {
-
+    for (int i = 0; i < ARRAY_LENGTH; i++) {
+        particleArray[i]->update();
+    }
 }
 
-void ParticleEffect::Render() {
-
+void ParticleEffect::Render(RenderWindow& window) {
+    for (int i = 0; i < ARRAY_LENGTH; i++) {
+        particleArray[i]->render(window);
+    }
 }
 
 //creates a new particle for every element of the particles array
 void ParticleEffect::Emit() {
-
+    for (int i = 0; i < ARRAY_LENGTH; i++) {
+        *(particleArray + i) = new Particle();
+    }
 }
 
 // adds a new particle at the specified index in the particles 
 // array (it should also randomize the particle velocity in some way)
-void ParticleEffect::AddParticle() {
-
+void ParticleEffect::AddParticle(int index) {
+    if (particleArray[index] != nullptr) {
+        delete particleArray[index];
+    }
+    particleArray[index] = new Particle();
+    int randX = rand() % 200 + 1;
+    int randY = rand() % 200 + 1;
+    sf::Vector2f randomVelocity = sf::Vector2f(randX, randY);
+    particleArray[index]->SetVelocity(randomVelocity);
 }

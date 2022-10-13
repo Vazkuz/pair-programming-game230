@@ -15,13 +15,13 @@ public:
 	ParticleEffect();
 	~ParticleEffect();
 	void Update();
-	void Render();
+	void Render(sf::RenderWindow& window);
 
 	//creates a new particle for every element of the particles array
 	void Emit();
 
 	// adds a new particle at the specified index in the particles 
 	// array (it should also randomize the particle velocity in some way)
-	void AddParticle();
+	void AddParticle(int index);
 };
 
